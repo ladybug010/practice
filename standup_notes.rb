@@ -1,3 +1,6 @@
+
+require 'yaml'
+
 def ask (question)
   puts question
   gets.chomp
@@ -29,10 +32,12 @@ def take_notes
       end
   end
   puts standup_notes_hash
+  standup_notes = standup_notes_hash.to_yaml
+  
   filename = 'Standup_Notes.txt'
 
   File.open filename, 'w' do |f|
-    f.write standup_notes_hash
+    f.write standup_notes
   end
   
 end
