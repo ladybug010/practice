@@ -34,7 +34,7 @@ def take_notes
   puts standup_notes_hash
   standup_notes = standup_notes_hash.to_yaml
   
-  filename = 'Standup_Notes.txt'
+  filename = 'Standup_Notes' + Time.now.to_s + '.txt'
 
   File.open filename, 'w' do |f|
     f.write standup_notes
