@@ -21,10 +21,14 @@ def take_notes
         standup_notes_hash[name][:yesterday] = ask "What did #{name} do yesterday?"
         standup_notes_hash[name][:today]  = ask "What is #{name} doing today?"
         standup_notes_hash[name][:blockers]  = ask "Does #{name} have any blockers?"
-      
+        
+      elsif notes != 'yes' || notes != 'no'
+        puts 'please answer yes or no'
       end
   end
   puts standup_notes_hash
 end
 
 take_notes
+
+standup_notes_hash > standup_+(date.now).txt
