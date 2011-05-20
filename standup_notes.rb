@@ -23,12 +23,18 @@ def take_notes
         standup_notes_hash[name][:blockers]  = ask "Does #{name} have any blockers?"
         
       elsif notes != 'yes' || notes != 'no'
+        puts
         puts 'please answer yes or no'
+        puts
       end
   end
   puts standup_notes_hash
+  filename = 'Standup_Notes.txt'
+
+  File.open filename, 'w' do |f|
+    f.write standup_notes_hash
+  end
+  
 end
 
 take_notes
-
-standup_notes_hash > standup_+(date.now).txt
