@@ -6,8 +6,8 @@ class Dragon
     @asleep = false  # he starts out awake
     @stomach = 5  #hunger will go from 1-10, with 10 being full
     @bladder = 5 #bladder will go from 1-10 will 10 being an emergency
-    #@bored = 5 #boredom will go from 1-10, with 10 being very bored
-    #@tired = 5 #tiredness will go from 1-10, with 10 being exhausted
+    @fun = 5 #fun will go from 1-10, with 10 being full fun
+    @energy = 5 #energy will go from 1-10, with 10 being fully rested
     
     puts @name + ' hatches. He blinks his eyes and looks at you.'
     
@@ -17,6 +17,7 @@ class Dragon
 #define the actions you can take with your dragon  
   def feed
     puts 'You feed ' + @name + '. He looks satisifed.'
+    puts
     @stomach = 10
     passageOfTime
   end
@@ -33,7 +34,7 @@ class Dragon
     puts
     puts ' He giggles and hiccups a spurt of fire, which singes your arm hair.'
     puts
-    #@bored = 1
+    @fun = 10
     passageOfTime
   end
   
@@ -50,6 +51,8 @@ class Dragon
         puts 'but wakes up when you stop.'
         puts
       end
+    #@engery = @engery + 2
+    passageOfTime
   end
   
   def putToBed
@@ -73,8 +76,12 @@ class Dragon
      puts @name + ' stretches and wakes up slowly.'
      puts
    end
+   @energy = 10
  end
  
+ def ignore
+    passageOfTime
+ end
   
   
   
@@ -89,38 +96,81 @@ def potty?
   @bladder >= 8
 end
 
-#def bored?
-#end
+def bored?
+ @fun <= 2
+end
+
+def tired?
+  @energy <= 2
+end
 
 def passageOfTime
-  if @stomach > 1 # if he is not already starving
+  
+  if @stomach >= 1 # if he is not already starving
     #move food from stomach into bladder
      @stomach = @stomach - 1
      @bladder = @bladder +1
-   elsif @hunger = 10 #the dragon is starving
+   elsif @stomach <= 10 #the dragon is starving
      if @asleep
        @asleep = false
        puts @name + ' wakes up suddenly, starving.'
        puts
      end
-       puts 'In desperation, ' + @name + ' eats you.'
+       puts 'In desperation, ' + @name + ' eats you. While your story ends here, ' + @name + ' flies away and finds a new home, where he can overcome his childhood neglect.'
        puts
        puts
        exit #quits program
    end
    
    if @bladder >= 10
+     puts
      puts 'Woops! ' + @name + ' had an accident on your floor...'
      @bladder = 1
      puts
    end
    
+    if @asleep == false
+       if @fun >= 1 # if the dragon isn't already SUPER bored
+         @fun = @fun -1
+       elsif @fun < 1 # if dragon is bored, he will entertain himself
+          puts @name + ' is so bored, breathes fire on one of your old socks and plays in the ashes. This entertains him.'
+          @fun = 10
+       end
+      
+       if @energy >= 1 #if the dragon is not already exhausted
+         @energy = @energy -1
+       elsif @energy <1 #if the dragon is exhausted
+         puts
+         puts @name + ' staggers and collapses in exhaustion. He takes a long nap and wakes up refreshed, but a little grumpy.'
+         puts
+         @energy = 10
+       end
+     end
+
+   if tired?
+     if @asleep == false
+       puts
+       puts @name + ' yawns. He looks very sleepy, you should put him to bed.'
+       puts
+      end 
+   end  
+   
+   if bored?
+     if @asleep == false
+       puts
+       puts @name + ' is getting bored. You should toss him in the air.'
+       puts
+     end
+   end
+   
    if hungry? 
      if @asleep
        @asleep = false
+       puts
        puts @name + 'wakes up suddenly.'
        puts
      end
+     puts
      puts @name + ' \'s stomach growls loudly... you should feed him.'
      puts
    end
@@ -128,10 +178,11 @@ def passageOfTime
    if potty?
      if @asleep
        @asleep = false
+       puts
        puts @name + ' groans and wakes up.'
        puts
      end
-     puts @name + ' does a potty dance.'
+     puts @name + ' does a potty dance. (you should walk him.)'
      puts
    end
    
@@ -193,7 +244,7 @@ start = false #user is not ready to start, because they have not purchased an eg
    
    
    #give list of actions that you could do.  
-   careList_array = ['feed him','walk him','toss him in the air','rock him','put him to bed', 'hire a sitter']
+   careList_array = ['feed him','walk him','toss him in the air','rock him','put him to bed', 'hire a sitter', 'ignore']
    
     puts 'He needs you to take care of him. You check the care list the old man gave you:'
     puts
@@ -204,22 +255,33 @@ start = false #user is not ready to start, because they have not purchased an eg
      puts 'what would you like to do?'
      toDo = gets.chomp
  
-    if toDo == 'feed him'
+    if toDo == careList_array[0]
       pet.feed
-    elsif toDo == 'walk him'
+      puts
+    elsif toDo == careList_array[1]
       pet.walk
-    elsif toDo == 'toss him in the air'
+      puts
+    elsif toDo == careList_array[2]
       pet.toss
-    elsif toDo == 'rock him'
+      puts
+    elsif toDo == careList_array[3]
       pet.rock
-    elsif toDo == 'put him to bed'
+      puts
+    elsif toDo == careList_array[4]
       pet.putToBed
-    elsif toDo == 'hire a sitter'
+      puts
+    elsif toDo == careList_array[5]
+      puts
       puts 'you hire a dragonsitter and take the rest of the day off.'
       exit
+    elsif toDo == careList_array[6]
+      pet.ignore
+      puts
+      puts 'you ignore him as he follows anxiously at your heels.'
+      puts
     else
       puts
-      puts 'Remember what the old man said, make sure your answer EXACTLY matches one of the following:'
+      puts "Remember what the old man said, make sure your answer EXACTLY matches one of the following:"
       puts
     end
     
