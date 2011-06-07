@@ -150,7 +150,7 @@ def passageOfTime
    if tired?
      if @asleep == false
        puts
-       puts @name + ' yawns. He looks very sleepy, you should put him to bed.'
+       puts @name + ' yawns. He looks very sleepy, you should put him to bed, before he passes out.'
        puts
       end 
    end  
@@ -158,7 +158,7 @@ def passageOfTime
    if bored?
      if @asleep == false
        puts
-       puts @name + ' is getting bored. You should toss him in the air.'
+       puts @name + ' is getting bored. You should toss him in the air, or he might find destructive ways to entertain himself.'
        puts
      end
    end
@@ -171,7 +171,7 @@ def passageOfTime
        puts
      end
      puts
-     puts @name + ' \'s stomach growls loudly... you should feed him.'
+     puts @name + ' \'s stomach growls loudly... you should feed him, NOW!'
      puts
    end
    
@@ -182,7 +182,7 @@ def passageOfTime
        puts @name + ' groans and wakes up.'
        puts
      end
-     puts @name + ' does a potty dance. (you should walk him.)'
+     puts @name + ' does a potty dance. (you should walk him soon!)'
      puts
    end
    
