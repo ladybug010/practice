@@ -1,3 +1,5 @@
+require "json"
+
 BARS_HASH = {
   :backRoom => {
     :name =>"The back room", 
@@ -42,18 +44,20 @@ def themeBar
       break
     
     else
-      puts "please enter the historical, crazy or nerdy"
+      puts "please enter the historical or crazy"
     end
   end
 end
 
 def classyBar
   puts 'There is nothing like a classy bar for great views and feeling like Don Draper. I\'d try:'
+  puts
   p BARS_HASH[:rooftop]
 end
 
 def diveBar
   puts 'Not everyone admits to it, but everyone loves a good dive bar. Here are the best....'
+  puts
   p BARS_HASH[:barcade]
 end
 
@@ -136,7 +140,8 @@ end
 
 
 if list == true
-  puts BARS_HASH
+  BARS_HASH.to_json
+  puts JSON.pretty_generate(BARS_HASH)
   puts
   puts
   puts "Have a kickRad 21st Birthday and a great year!"
