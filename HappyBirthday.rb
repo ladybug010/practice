@@ -33,40 +33,56 @@ def themeBar
   while true
     puts( 'Theme bars are amazing!'.center(line_width))
     puts "Do you want the theme to be historical or crazy?"
+    puts
     type = gets.chomp.downcase
         
     if type == 'historical'
-      puts BARS_HASH[:backRoom]
+      puts
+      puts "A historical themed bar in NYC? Probably my favorite thing ever."
+      puts "The best one is:"
+      BARS_HASH[:backRoom].to_json
+      puts JSON.pretty_generate(BARS_HASH[:backRoom])
       break
     
     elsif type == 'crazy'
-      p BARS_HASH[:carnival]
+      puts "A crazy-themed bar it is (those have to be the most fun, right?)"
+      puts "I suggest:"
+      BARS_HASH[:carnival].to_json
+      puts JSON.pretty_generate(BARS_HASH[:carnival])
       break
     
     else
       puts "please enter the historical or crazy"
+      puts
     end
   end
 end
 
 def classyBar
-  puts 'There is nothing like a classy bar for great views and feeling like Don Draper. I\'d try:'
+  puts 'There is nothing like a classy bar for great views and feeling like Don Draper.'
+  puts 'I\'d try:'
   puts
-  p BARS_HASH[:rooftop]
+  BARS_HASH[:rooftop].to_json
+  puts JSON.pretty_generate(BARS_HASH[:rooftop])
 end
 
 def diveBar
-  puts 'Not everyone admits to it, but everyone loves a good dive bar. Here are the best....'
+  puts 'Not everyone admits it, but everyone loves a good dive bar.'
+  puts 'This one sounds Agora-approved awesome:'
   puts
-  p BARS_HASH[:barcade]
+  BARS_HASH[:barcade].to_json
+  puts JSON.pretty_generate(BARS_HASH[:barcade])
+  puts
 end
 
 
 def happyBirthday
+line_width = 50
 puts "What is your first name?"
 name = gets.chomp.downcase
 if name == "matt" || name == "matthew" 
-    puts "Happy 21st Birthday!"
+    puts("Happy 21st Birthday!".center(line_width))
+    puts
     puts 'Would you like some suggestions for bars in Manhatten?'
     suggestion = gets.chomp.downcase
 
@@ -80,25 +96,33 @@ if name == "matt" || name == "matthew"
         choice = gets.chomp.downcase
             
             if choice == 'list' 
+              puts
               puts 'Here is a list of the best bars in Manhatten: '
               list = true
             
           
             elsif choice == 'suggest'
+              puts
               puts 'very well, let me narrow down the type of bar you are interested in.'
+              puts
               sug = true
             end
       break
       
     elsif suggestion == 'no' || suggestion == 'n'
+      puts
       puts 'Well, I guess you already know of all the right places to go. You have no excuse for not having an EPIC 21 run. (or 21 happy hour-after work... etc)'
       puts
-      puts "Have a kickRad 21st Birthday and a great year!"
+      puts("Have a kickRad 21st Birthday and a great year!".center(line_width))
+      puts
       break
       
     else
+      puts
       puts "please enter yes or no. Seriously, you are 21, this is not that hard."
+      puts
       puts 'Would you like some suggestions for bars in Manhatten?'
+      puts
       suggestion = gets.chomp.downcase
     end
 end
@@ -109,11 +133,13 @@ end
 
 if sug == true
   while true
-    
+    line_width = 50
+    puts
     puts "What type of Bar do you want to go to?"
-    puts "Your options are: a) a theme bar, b) a classy Bar, or c) a Dive bar"
+    puts("Your options are: a) a theme bar, b) a classy Bar, or c) a Dive bar".center(line_width))
     puts 'Please enter the letter of your choice:  '
     bar = gets.chomp.downcase
+    puts
     
       if bar == 'a'
         themeBar
@@ -134,17 +160,19 @@ if sug == true
   end
      
       puts
-      puts "Have a kickRad 21st Birthday and a great year!"
+      puts("Have a kickRad 21st Birthday and a great year!".center(line_width))
       
 end
 
 
 if list == true
+  line_width = 50
   BARS_HASH.to_json
   puts JSON.pretty_generate(BARS_HASH)
   puts
   puts
-  puts "Have a kickRad 21st Birthday and a great year!"
+  puts("Have a kickRad 21st Birthday and a great year!".center(line_width))
+  puts
   end
 end
 
