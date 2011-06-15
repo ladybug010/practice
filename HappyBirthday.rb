@@ -1,4 +1,5 @@
 require "json"
+require 'pp'
 
 BARS_HASH = {
   :backRoom => {
@@ -40,15 +41,17 @@ def themeBar
       puts
       puts "A historical themed bar in NYC? Probably my favorite thing ever."
       puts "The best one is:"
-      BARS_HASH[:backRoom].to_json
-      puts JSON.pretty_generate(BARS_HASH[:backRoom])
+      #BARS_HASH[:backRoom].to_json
+      #puts JSON.pretty_generate(BARS_HASH[:backRoom])
+      pp BARS_HASH[:backRoom]
       break
     
     elsif type == 'crazy'
       puts "A crazy-themed bar it is (those have to be the most fun, right?)"
       puts "I suggest:"
-      BARS_HASH[:carnival].to_json
-      puts JSON.pretty_generate(BARS_HASH[:carnival])
+      #BARS_HASH[:carnival].to_json
+      #puts JSON.pretty_generate(BARS_HASH[:carnival])
+      pp BARS_HASH[:carnival]
       break
     
     else
@@ -62,16 +65,18 @@ def classyBar
   puts 'There is nothing like a classy bar for great views and feeling like Don Draper.'
   puts 'I\'d try:'
   puts
-  BARS_HASH[:rooftop].to_json
-  puts JSON.pretty_generate(BARS_HASH[:rooftop])
+  #BARS_HASH[:rooftop].to_json
+  #puts JSON.pretty_generate(BARS_HASH[:rooftop])
+  pp BARS_HASH[:rooftop]
 end
 
 def diveBar
   puts 'Not everyone admits it, but everyone loves a good dive bar.'
   puts 'This one sounds Agora-approved awesome:'
   puts
-  BARS_HASH[:barcade].to_json
-  puts JSON.pretty_generate(BARS_HASH[:barcade])
+  #BARS_HASH[:barcade].to_json
+  #puts JSON.pretty_generate(BARS_HASH[:barcade])
+  pp BARS_HASH[:barcade]
   puts
 end
 
@@ -83,7 +88,7 @@ name = gets.chomp.downcase
 if name == "matt" || name == "matthew" 
     puts("Happy 21st Birthday!".center(line_width))
     puts
-    puts 'Would you like some suggestions for bars in Manhatten?'
+    puts 'Would you like some suggestions for bars in Manhattan?'
     suggestion = gets.chomp.downcase
 
   while true
@@ -97,7 +102,7 @@ if name == "matt" || name == "matthew"
             
             if choice == 'list' 
               puts
-              puts 'Here is a list of the best bars in Manhatten: '
+              puts 'Here is a list of the best bars in Manhattan: '
               list = true
             
           
@@ -121,7 +126,7 @@ if name == "matt" || name == "matthew"
       puts
       puts "please enter yes or no. Seriously, you are 21, this is not that hard."
       puts
-      puts 'Would you like some suggestions for bars in Manhatten?'
+      puts 'Would you like some suggestions for bars in Manhattan?'
       puts
       suggestion = gets.chomp.downcase
     end
@@ -167,8 +172,9 @@ end
 
 if list == true
   line_width = 50
-  BARS_HASH.to_json
-  puts JSON.pretty_generate(BARS_HASH)
+  #BARS_HASH.to_json
+  #puts JSON.pretty_generate(BARS_HASH)
+  pp BARS_HASH
   puts
   puts
   puts("Have a kickRad 21st Birthday and a great year!".center(line_width))
